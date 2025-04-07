@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 import java.time.Instant
 import java.time.LocalDateTime
+import java.util.Date
+import java.util.UUID
 import kotlin.io.path.writeBytes
 
 @RestController
@@ -90,7 +92,16 @@ class UserRegistrar(
         }
 
         // Send confirmation email
-        emailService.sendConfirmation(u)
+        if (emailProps.shouldBeVerified) {
+            emailService.sendConfirmation(u)
+        } else {
+            // Generate token (UUID4)
+            val token = UUID.randomUUID().toString()
+            val confirmation = EmailConfirmation(token = token, aquaNetUser = u, createdAt = Date().toInstant())
+            confirmationRepo.save(confirmation)
+
+            async { userRepo.save(confirmation.aquaNetUser.apply { emailConfirmed = true }) }
+        }
 
         return mapOf("success" to true)
     }
@@ -223,5 +234,12 @@ class UserRegistrar(
         }
 
         SUCCESS
+    }
+
+    @API("/should-be-verified-email")
+    @Doc("Check if email verification is required.", "True if required")
+    suspend fun shouldBeVerifiedEmail(): Any {
+        log.info("Net: /user/should-be-verified-email")
+        return mapOf("shouldBeVerifiedEmail" to emailProps.shouldBeVerified)
     }
 }

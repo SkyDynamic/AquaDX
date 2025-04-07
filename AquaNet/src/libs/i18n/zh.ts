@@ -55,6 +55,7 @@ const zhWelcome: typeof EN_REF_Welcome = {
   'welcome.turnstile-error': '验证网络环境出错了，请关闭 VPN 后重试',
   'welcome.turnstile-timeout': '验证网络环境超时了，请重试',
   'welcome.verification-sent': '验证邮件已发送至 ${email}，请翻翻收件箱',
+  'welcome.registered': '注册成功',
   'welcome.verify-state-0': '您还没有验证邮箱哦！验证邮件一分钟内刚刚发到您的邮箱，请翻翻收件箱',
   'welcome.verify-state-1': '您还没有验证邮箱哦！我们在过去的 24 小时内已经发送了 3 封验证邮件，所以我们不会再发送了，请翻翻收件箱',
   'welcome.verify-state-2': '您还没有验证邮箱哦！我们刚刚又发送了一封验证邮件，请翻翻收件箱',

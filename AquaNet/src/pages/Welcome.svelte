@@ -19,6 +19,7 @@
   let turnstileReset: () => void | undefined;
 
   let error = ""
+  let message = ""
   let verifyMsg = ""
 
   if (USER.isLoggedIn()) {
@@ -65,11 +66,18 @@
       }
 
       // Send request to server
+      const shouldBeConfirmEmail = await USER.checkShouldBeConfirmEmail()
+
       await USER.register({ username, email, password, turnstile })
         .then(() => {
           // Show verify email message
-          state = 'verify'
-          verifyMsg = t("welcome.verification-sent", { email })
+          if (shouldBeConfirmEmail === "true") {
+            state = 'verify'
+            verifyMsg = t("welcome.verification-sent", { email })
+          } else {
+            state = 'login'
+            message = t("welcome.registered")
+          }
         })
         .catch(e => {
           error = e.message
@@ -119,6 +127,9 @@
       <div class="login-form" transition:slide>
         {#if error}
           <span class="error">{error}</span>
+        {/if}
+        {#if message}
+          <span class="info">{message}</span>
         {/if}
         <div on:click={() => state = 'home'} on:keypress={() => state = 'home'}
              role="button" tabindex="0" class="clickable">

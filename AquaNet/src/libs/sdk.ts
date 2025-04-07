@@ -163,6 +163,11 @@ async function login(user: { email: string, password: string, turnstile: string 
   localStorage.setItem('token', data.token)
 }
 
+async function checkShouldBeConfirmEmail(): Promise<String> {
+  const data = await post('/api/v2/user/should-be-verified-email')
+  return data.shouldBeVerifiedEmail.toString()
+}
+
 const isLoggedIn = () => !!localStorage.getItem('token')
 const ensureLoggedIn = () => !isLoggedIn() && (window.location.href = '/')
 
@@ -186,6 +191,7 @@ export const USER = {
   },
   isLoggedIn,
   ensureLoggedIn,
+  checkShouldBeConfirmEmail
 }
 
 export const USERBOX = {

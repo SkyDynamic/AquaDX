@@ -22,6 +22,7 @@ import java.util.*
 @ConfigurationProperties(prefix = "aqua-net.email")
 class EmailProperties {
     var enable: Bool = false
+    var shouldBeVerified = true
     var senderName: Str = "AquaDX"
     var senderAddr: Str = "aquadx@example.com"
     var webHost: Str = "aquadx.net"
@@ -61,7 +62,7 @@ class EmailService(
      * Send a confirmation email to the user
      */
     fun sendConfirmation(user: AquaNetUser) {
-        if (!props.enable) return
+        if (!props.enable || !props.shouldBeVerified) return
 
         // Generate token (UUID4)
         val token = UUID.randomUUID().toString()

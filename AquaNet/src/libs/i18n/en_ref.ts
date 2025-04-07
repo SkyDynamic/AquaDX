@@ -43,6 +43,7 @@ export const EN_REF_Welcome = {
   'welcome.turnstile-error': 'Error verifying your network environment. Please turn off your VPN and try again.',
   'welcome.turnstile-timeout': 'Network verification timed out. Please try again.',
   'welcome.verification-sent': 'A verification email has been sent to ${email}. Please check your inbox!',
+  'welcome.registered': 'Your account has been registered!',
   'welcome.verify-state-0': 'You haven\'t verified your email. A verification email had been sent to your inbox less than a minute ago. Please check your inbox!',
   'welcome.verify-state-1': 'You haven\'t verified your email. We\'ve already sent 3 emails over the last 24 hours so we\'ll not send another one. Please check your inbox!',
   'welcome.verify-state-2': 'You haven\'t verified your email. We just sent you another verification email. Please check your inbox!',
