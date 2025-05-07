@@ -191,6 +191,7 @@ export const EN_REF_SETTINGS = {
 export const EN_REF_USERBOX = {
   'userbox.header.general': 'General Settings',
   'userbox.header.matching': 'National Matching',
+  'userbox.header.matching.symbolChat': 'Chat Symbols (Matching)',
   'userbox.header.userbox': 'UserBox Settings',
   'userbox.header.preview': 'UserBox Preview',
   'userbox.nameplateId': 'Nameplate',
@@ -217,6 +218,8 @@ export const EN_REF_USERBOX = {
   'userbox.matching.option.collab': 'Collaborators',
   'userbox.matching.custom.name': 'Custom',
   'userbox.matching.custom.sub': 'Enter your own URL',
+  'userbox.matching.symbolChat': 'Message Choice',
+  'userbox.matching.symbolChat.default': 'Default',
 
   'userbox.new.name': 'AquaBox',
   'userbox.new.setup': 'Drag and drop your Chuni game folder (Lumi or newer) into the box below to display UserBoxes with their nameplate & avatar. All files are handled in-browser.',
@@ -271,6 +274,7 @@ export const EN_REF_AQUATRANS = {
   'trans.btn.test': 'Test Connection',
   'trans.btn.export': 'Export Data',
   'trans.btn.import': 'Import Data',
+  'trans.blacklist': "Your server's rules doesn't allow using this tool. You might get banned if you try (idk, ask them if you want to know why)",
 }
 
 export const EN_REF = { ...EN_REF_USER, ...EN_REF_Welcome, ...EN_REF_GENERAL,
